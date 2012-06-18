@@ -1,0 +1,1 @@
+This repository is my attempt to complete the exersizes from *[The Little Schemer] (http://www.amazon.com/The-Little-Schemer-4th-Edition/dp/0262560992/ref=sr_1_2?ie=UTF8&qid=1339991878&sr=8-2&keywords=the+little+lisper)* in JavaScript.
