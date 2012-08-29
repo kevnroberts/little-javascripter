@@ -1,7 +1,10 @@
 // functions native to Scheme
 
 function car(arr){
-	return arr[0];
+	if(arr.constructor === Array && arr.length){
+		return arr[0];
+	}
+	return null;
 }
 
 function cdr(arr){
