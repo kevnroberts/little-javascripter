@@ -84,5 +84,64 @@ describe("Primitives", function(){
 			expect(result[2]).toEqual('and');
 			expect(result[3]).toEqual('jelly');
 		});
+		it("should return [['banana', 'and'], 'peanut', 'butter', 'and', 'jelly'] when calling cons(['banana', 'and'], ['peanut', 'butter', 'and', 'jelly'])", function () {
+			var result = cons(['banana', 'and'], ['peanut', 'butter', 'and', 'jelly']);
+			expect(result.length).toEqual(5);
+			expect(result[0] instanceof Array).toEqual(true);
+			expect(result[0].length).toEqual(2);
+			expect(result[0][0]).toEqual('banana');
+			expect(result[0][1]).toEqual('and');
+			expect(result[1]).toEqual('peanut');
+			expect(result[2]).toEqual('butter');
+			expect(result[3]).toEqual('and');
+			expect(result[4]).toEqual('jelly');
+		});
+		it("should return ['a'] when calling cons('a', [])", function(){
+			var result = cons('a', []);
+			expect(result.length).toEqual(1);
+			expect(result[0]).toEqual('a');
+		});
+	});
+	describe("isNull", function(){
+		it("should return 'true' when calling isNull([])", function(){
+			var result = isNull([]);
+			expect(result).toEqual(true);
+		});
+		it("should return 'false' when calling isNull(['a', 'b', 'c'])", function(){
+			var result = isNull(['a', 'b', 'c']);
+			expect(result).toEqual(false);
+		});
+		it("should return 'null' when calling isNull('spaghetti')", function(){
+			var result = isNull('spaghetti');
+			expect(result).toEqual(null);
+		});
+	});
+	describe("isAtom", function(){
+		it("should return 'true' when calling isAtom('Harry')", function(){
+			expect(isAtom('Harry')).toEqual(true);
+		});
+		it("should return 'false' when calling isAtom(['Harry', 'had', 'a', 'heap', 'of', 'apples'])", function(){
+			expect(isAtom(['Harry', 'had', 'a', 'heap', 'of', 'apples'])).toEqual(false);
+		});
+		it("should return 'true' when calling isAtom(car(['Harry', 'had', 'a', 'heap', 'of', 'apples']))", function(){
+			expect(isAtom(car(['Harry', 'had', 'a', 'heap', 'of', 'apples']))).toEqual(true);
+		});
+		it("should return 'false' when calling isAtom(cdr(['Harry', 'had', 'a', 'heap', 'of', 'apples']))", function(){
+			expect(isAtom(cdr(['Harry', 'had', 'a', 'heap', 'of', 'apples']))).toEqual(false);
+		});
+	});
+	describe("isEq", function () {
+		it("should return 'true' when calling isEq('Harry', 'Harry')", function () {
+			expect(isEq('Harry', 'Harry')).toEqual(true);
+		});
+		it("should return 'false' when calling isEq('margarine', 'butter')", function(){
+			expect(isEq('margarine', 'butter')).toEqual(false);
+		});
+		it("should return 'null' when calling isEq([], ['strawberry'])", function(){
+			expect(isEq([], ['strawberry'])).toEqual(null);
+		});
+		it("should return 'null' when calling isEq(6, 7)", function(){
+			expect(isEq(6, 7)).toEqual(null);
+		});
 	});
 });
